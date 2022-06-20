@@ -10,7 +10,8 @@ import datetime
 import webbrowser
 
 # Some parameters
-eod_time = "23:42" # End of Day
+eod_time = (input("When does your day end? <HH:MM> ") or "17:00") # default is 5PM
+work_duration_minute = (input("Break reminder every? <minute> ") or 20) # default is 20 minutes
 
 # Helper Functions
 def is_before_eod_time(eod_time):
@@ -29,7 +30,7 @@ def is_before_eod_time(eod_time):
 print("Start at "+ time.ctime() + "\nEnd at "+eod_time)
 while is_before_eod_time(eod_time):
     # Every after 20 mins
-    time.sleep(60*20)
+    time.sleep(60*work_duration_minute)
     # Play a this youtube video
     webbrowser.open("https://www.youtube.com/watch?v=aynkFJdXF_M")
 print("Good job! it's the end of the day.")
